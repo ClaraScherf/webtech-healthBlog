@@ -34,7 +34,7 @@ Der Nutzer kann eine Freifeldtexteingabe nutzen, um einige Worte über seinen Ta
 
 :newspaper: Zufällige Zitate:
 
-Jedes Mal, wenn der Nutzer sich einloggt, wird ein zufälliges motivierendes oder inspirierendes Zitat angezeigt.
+JJeden Tag wird dem Nutzer ein neues, nach dem Zufallsprinzip ausgewähltes, motivierendes oder inspirierendes Zitat angezeigt.
 
 
 
