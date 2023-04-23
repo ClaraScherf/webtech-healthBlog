@@ -26,16 +26,8 @@ Der Nutzer kann die Kalorien, die er zu sich genommen hat, in der Anwendung eint
 
 :smiley: Emojis:
 
-In der Anwendung kann der Nutzer aus einer bestimmten Anzahl verschiedener Emojis wählen, wie er seinen Tag bewertet bzw. wie sein Tag verlaufen ist.
+In der Anwendung kann der Nutzer Emojis (:smile:,:neutral_face:,:pensive:) eintragen, wie er seinen Tag bewertet bzw. wie sein Tag verlaufen ist.
 
 :notebook: Tagebuch-Eintrag:
 
 Der Nutzer kann eine Freifeldtexteingabe nutzen, um einige Worte über seinen Tag oder seine Gefühle zu erfassen.
-
-:newspaper: Zufällige Zitate:
-
-Jeden Tag wird dem Nutzer ein neues, nach dem Zufallsprinzip ausgewähltes, motivierendes oder inspirierendes Zitat angezeigt.
-
-
-
-Diese Funktionen sollen dem Nutzer helfen, seine Gesundheitsdaten und sein Wohlbefinden im Blick zu behalten und seine täglichen Aktivitäten besser zu verstehen.
