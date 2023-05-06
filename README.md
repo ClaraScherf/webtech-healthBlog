@@ -1,7 +1,8 @@
 # Health Blog Webanwendung
 
 ---
-
+status badge: 
+[![CI](https://github.com/ClaraScherf/webtech-healthBlog/actions/workflows/tests.yml/badge.svg)](https://github.com/ClaraScherf/webtech-healthBlog/actions/workflows/tests.yml)
 
 Autoren:
 
