@@ -12,8 +12,7 @@ public class BlogEntry {
     private LocalDate date;
     private int steps;
     private int calories;
-    private String[] emojis = {"😔", "😐", "😄"};
-    private int emojiIndex;
+    private int emojis;
     private String diaryEntry;
 
     /**
@@ -22,15 +21,15 @@ public class BlogEntry {
      * @param date        das Datum des Eintrags
      * @param steps       die Anzahl der Schritte an diesem Tag
      * @param calories    die aufgenommenen Kalorien an diesem Tag
-     * @param emojiIndex  das Emoji, das den Gemütszustand des Benutzers darstellt
+     * @param emojis  das Emoji, das den Gemütszustand des Benutzers darstellt
      * @param diaryEntry  der Tagebucheintrag des Benutzers
      */
-    public BlogEntry(long id, LocalDate date, int steps, int calories, int emojiIndex, String diaryEntry) {
+    public BlogEntry(long id, LocalDate date, int steps, int calories, int emojis, String diaryEntry) {
         this.id = id;
         this.date = date;
         this.steps = steps;
         this.calories = calories;
-        this.emojiIndex = emojiIndex;
+        this.emojis = emojis;
         this.diaryEntry = diaryEntry;
     }
 
@@ -106,31 +105,12 @@ public class BlogEntry {
         this.calories = calories;
     }
 
-    /**
-     * Gibt den Index des gewählten Emojis im Emojis-Array zurück.
-     *
-     * @return der Index des gewählten Emojis
-     */
-    public int getEmojiIndex() {
-        return emojiIndex;
+    public int getEmojis() {
+        return emojis;
     }
 
-    /**
-     * Setzt den Index des gewählten Emojis im Emojis-Array.
-     *
-     * @param emojiIndex der neue Index des gewählten Emojis
-     */
-    public void setEmojiIndex(int emojiIndex) {
-        this.emojiIndex = emojiIndex;
-    }
-
-    /**
-     * Gibt das gewählte Emoji zurück.
-     *
-     * @return das gewählte Emoji
-     */
-    public String getSelectedEmoji() {
-        return emojis[emojiIndex];
+    public void setEmojis(int emojis) {
+        this.emojis = emojis;
     }
 
     /**
