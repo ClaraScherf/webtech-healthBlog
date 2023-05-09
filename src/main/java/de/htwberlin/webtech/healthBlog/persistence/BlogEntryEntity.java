@@ -28,7 +28,7 @@ public class BlogEntryEntity {
     @Column(name = "diary_entry")
     private String diaryEntry;
 
-    public BlogEntryEntity(long id, LocalDate date, int steps, int calories, int emojis, String diaryEntry) {
+    public BlogEntryEntity(LocalDate date, int steps, int calories, int emojis, String diaryEntry) {
         //this.id = id; überflüssig, da von der DB generiert
         this.date = date;
         this.steps = steps;

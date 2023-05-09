@@ -3,6 +3,7 @@ package de.htwberlin.webtech.healthBlog.service;
 import de.htwberlin.webtech.healthBlog.persistence.BlogEntryEntity;
 import de.htwberlin.webtech.healthBlog.persistence.BlogEntryRepository;
 import de.htwberlin.webtech.healthBlog.web.api.BlogEntry;
+import de.htwberlin.webtech.healthBlog.web.api.BlogEntryRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,15 +21,24 @@ public class BlogEntryService {
     public List<BlogEntry> findAll(){
         List<BlogEntryEntity> entry = entryRepo.findAll();
         return entry.stream()
-                .map(blogEntryEntity -> new BlogEntry(
-                        blogEntryEntity.getId(),
-                        blogEntryEntity.getDate(),
-                        blogEntryEntity.getSteps(),
-                        blogEntryEntity.getCalories(),
-                        blogEntryEntity.getEmojis(),
-                        blogEntryEntity.getDiaryEntry()
-                        ))
+                .map(this::transformEnity)
                 .collect(Collectors.toList());
 
+    }
+    public BlogEntry create(BlogEntryRequest request){
+        var blogEntity = new BlogEntryEntity(request.getDate(), request.getSteps(), request.getCalories(), request.getEmojis(), request.getDiaryEntry());
+        blogEntity = entryRepo.save(blogEntity);
+        return transformEnity(blogEntity);
+    }
+
+    private BlogEntry transformEnity(BlogEntryEntity entity) {
+        return new BlogEntry(
+                entity.getId(),
+                entity.getDate(),
+                entity.getSteps(),
+                entity.getCalories(),
+                entity.getEmojis(),
+                entity.getDiaryEntry()
+        );
     }
 }
