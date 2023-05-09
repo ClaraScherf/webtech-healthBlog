@@ -1,16 +1,17 @@
 package de.htwberlin.webtech.healthBlog.persistence;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.time.LocalDate;
+
 
 @Entity(name = "blog_entries") // "blog_entries" is the name of the table in the database
 public class BlogEntryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id") // "id" is the name of the column in the database
-    private long id;
+    @Column(name= "id")
+    private Long id;
 
     @Column(name = "date", nullable = false)
     private LocalDate date;
@@ -38,8 +39,11 @@ public class BlogEntryEntity {
 
     protected BlogEntryEntity() {}
 
-    public long getId() {
+    public Long getId() {
         return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public LocalDate getDate() {
