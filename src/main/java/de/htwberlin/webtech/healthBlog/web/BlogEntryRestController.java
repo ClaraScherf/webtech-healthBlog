@@ -1,5 +1,6 @@
 package de.htwberlin.webtech.healthBlog.web;
 
+import de.htwberlin.webtech.healthBlog.service.BlogEntryService;
 import de.htwberlin.webtech.healthBlog.web.api.BlogEntry;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,19 +13,15 @@ import java.util.List;
 @RestController
 public class BlogEntryRestController {
 
-    private List<BlogEntry> blogEntries;
+   private final BlogEntryService blogEntryService;
 
-    public BlogEntryRestController(){
-        blogEntries = new ArrayList<>();
-        blogEntries.add(new BlogEntry(1, LocalDate.of(2020, 1, 1), 1000, 2000,
-                0, "Ich bin heute 1000 Schritte gelaufen."));
-        blogEntries.add(new BlogEntry(2, LocalDate.of(2020, 1, 2), 2000, 3000,
-                1, "Ich bin heute 2000 Schritte gelaufen."));
-    }
+   public BlogEntryRestController(BlogEntryService blogEntryService){
+       this.blogEntryService = blogEntryService;
+   }
 
     @GetMapping(path = "/api/v1/blog-entries")
     public ResponseEntity<List<BlogEntry>> fetchBlogEntries(){
-        return ResponseEntity.ok(blogEntries);
+        return ResponseEntity.ok(blogEntryService.findAll());
 
     }
 
