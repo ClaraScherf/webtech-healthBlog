@@ -46,4 +46,10 @@ public class BlogEntryRestController {
         return blogEntry != null? ResponseEntity.ok(blogEntry) : ResponseEntity.notFound().build();
     }
 
+    @DeleteMapping(path = "/api/v1/blog-entries/{id}")
+    public ResponseEntity<Void> deleteBlogEntry(@PathVariable Long id){
+        boolean successful = blogEntryService.deleteById(id);
+        return successful? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+    }
+
 }

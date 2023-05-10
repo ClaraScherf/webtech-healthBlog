@@ -55,6 +55,15 @@ public class BlogEntryService {
         return transformEntity(blogEntryEntity);
     }
 
+    public boolean deleteById(Long id) {
+        if (!blogEntryRepository.existsById(id)) {
+            return false;
+        }
+
+        blogEntryRepository.deleteById(id);
+        return true;
+    }
+
     private BlogEntry transformEntity(BlogEntryEntity blogEntryEntity) {
         return new BlogEntry(
                 blogEntryEntity.getId(),
