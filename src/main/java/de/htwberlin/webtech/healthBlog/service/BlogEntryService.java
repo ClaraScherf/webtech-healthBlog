@@ -25,6 +25,12 @@ public class BlogEntryService {
                 .collect(Collectors.toList());
 
     }
+
+    public BlogEntry findById(Long id){
+        var blogEntryEntity = blogEntryRepository.findById(id);
+        return blogEntryEntity.map(this::transformEntity).orElse(null);
+    }
+
     public BlogEntry create(BlogEntryCreateRequest request){
         var blogEntryEntity = new BlogEntryEntity(request.getDate(), request.getSteps(), request.getCalories(),
                 request.getEmojis(), request.getDiaryEntry());

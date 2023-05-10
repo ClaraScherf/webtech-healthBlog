@@ -24,6 +24,14 @@ public class BlogEntryRestController {
         return ResponseEntity.ok(blogEntryService.findAll());
 
     }
+
+    @GetMapping(path = "/api/v1/blog-entries/{id}")
+    public ResponseEntity<BlogEntry> fetchBlogEntryById(@PathVariable Long id){
+        var blogEntry = blogEntryService.findById(id);
+        return blogEntry != null? ResponseEntity.ok(blogEntry) : ResponseEntity.notFound().build();
+    }
+
+
     @PostMapping(path = "/api/v1/blog-entries")
     public ResponseEntity<Void> createBlogEntry(@RequestBody BlogEntryCreateRequest request) throws URISyntaxException {
        var blogEntry = blogEntryService.create(request);
