@@ -3,7 +3,7 @@ package de.htwberlin.webtech.healthBlog.service;
 import de.htwberlin.webtech.healthBlog.persistence.BlogEntryEntity;
 import de.htwberlin.webtech.healthBlog.persistence.BlogEntryRepository;
 import de.htwberlin.webtech.healthBlog.web.api.BlogEntry;
-import de.htwberlin.webtech.healthBlog.web.api.BlogEntryCreateRequest;
+import de.htwberlin.webtech.healthBlog.web.api.BlogEntryManipulationRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,10 +31,27 @@ public class BlogEntryService {
         return blogEntryEntity.map(this::transformEntity).orElse(null);
     }
 
-    public BlogEntry create(BlogEntryCreateRequest request){
+    public BlogEntry create(BlogEntryManipulationRequest request){
         var blogEntryEntity = new BlogEntryEntity(request.getDate(), request.getSteps(), request.getCalories(),
                 request.getEmojis(), request.getDiaryEntry());
         blogEntryEntity = blogEntryRepository.save(blogEntryEntity);
+        return transformEntity(blogEntryEntity);
+    }
+
+    public BlogEntry update(Long id, BlogEntryManipulationRequest request){
+        var blogEntryEntityOptional = blogEntryRepository.findById(id);
+        if(blogEntryEntityOptional.isEmpty()){
+            return null;
+        }
+
+        var blogEntryEntity = blogEntryEntityOptional.get();
+        blogEntryEntity.setDate(request.getDate());
+        blogEntryEntity.setSteps(request.getSteps());
+        blogEntryEntity.setCalories(request.getCalories());
+        blogEntryEntity.setEmojis(request.getEmojis());
+        blogEntryEntity.setDiaryEntry(request.getDiaryEntry());
+        blogEntryEntity = blogEntryRepository.save(blogEntryEntity);
+
         return transformEntity(blogEntryEntity);
     }
 
