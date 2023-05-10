@@ -3,7 +3,7 @@ package de.htwberlin.webtech.healthBlog.service;
 import de.htwberlin.webtech.healthBlog.persistence.BlogEntryEntity;
 import de.htwberlin.webtech.healthBlog.persistence.BlogEntryRepository;
 import de.htwberlin.webtech.healthBlog.web.api.BlogEntry;
-import de.htwberlin.webtech.healthBlog.web.api.BlogEntryRequest;
+import de.htwberlin.webtech.healthBlog.web.api.BlogEntryCreateRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,33 +12,34 @@ import java.util.stream.Collectors;
 @Service
 public class BlogEntryService {
 
-    private final BlogEntryRepository entryRepo;
+    private final BlogEntryRepository blogEntryRepository;
 
-    public BlogEntryService(BlogEntryRepository entryRepo){
-        this.entryRepo = entryRepo;
+    public BlogEntryService(BlogEntryRepository blogEntryRepository){
+        this.blogEntryRepository = blogEntryRepository;
     }
 
     public List<BlogEntry> findAll(){
-        List<BlogEntryEntity> entry = entryRepo.findAll();
-        return entry.stream()
-                .map(this::transformEnity)
+        List<BlogEntryEntity> blogEntries = blogEntryRepository.findAll();
+        return blogEntries.stream()
+                .map(this::transformEntity)
                 .collect(Collectors.toList());
 
     }
-    public BlogEntry create(BlogEntryRequest request){
-        var blogEntity = new BlogEntryEntity(request.getDate(), request.getSteps(), request.getCalories(), request.getEmojis(), request.getDiaryEntry());
-        blogEntity = entryRepo.save(blogEntity);
-        return transformEnity(blogEntity);
+    public BlogEntry create(BlogEntryCreateRequest request){
+        var blogEntryEntity = new BlogEntryEntity(request.getDate(), request.getSteps(), request.getCalories(),
+                request.getEmojis(), request.getDiaryEntry());
+        blogEntryEntity = blogEntryRepository.save(blogEntryEntity);
+        return transformEntity(blogEntryEntity);
     }
 
-    private BlogEntry transformEnity(BlogEntryEntity entity) {
+    private BlogEntry transformEntity(BlogEntryEntity blogEntryEntity) {
         return new BlogEntry(
-                entity.getId(),
-                entity.getDate(),
-                entity.getSteps(),
-                entity.getCalories(),
-                entity.getEmojis(),
-                entity.getDiaryEntry()
+                blogEntryEntity.getId(),
+                blogEntryEntity.getDate(),
+                blogEntryEntity.getSteps(),
+                blogEntryEntity.getCalories(),
+                blogEntryEntity.getEmojis(),
+                blogEntryEntity.getDiaryEntry()
         );
     }
 }

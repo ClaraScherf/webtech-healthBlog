@@ -7,4 +7,9 @@ import java.util.List;
 
 @Repository
 public interface BlogEntryRepository extends JpaRepository<BlogEntryEntity, Long> {
+
+    List<BlogEntryEntity> findAllByCalories(int calories);
+
 }
+
+

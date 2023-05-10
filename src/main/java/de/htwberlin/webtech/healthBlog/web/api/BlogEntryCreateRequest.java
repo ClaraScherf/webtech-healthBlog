@@ -2,7 +2,7 @@ package de.htwberlin.webtech.healthBlog.web.api;
 
 import java.time.LocalDate;
 
-public class BlogEntryRequest {
+public class BlogEntryCreateRequest {
     private LocalDate date;
     private int steps;
     private int calories;
@@ -10,7 +10,7 @@ public class BlogEntryRequest {
     private String diaryEntry;
 
 
-    public BlogEntryRequest(LocalDate date, int steps, int calories, int emojis, String diaryEntry) {
+    public BlogEntryCreateRequest(LocalDate date, int steps, int calories, int emojis, String diaryEntry) {
         this.date = date;
         this.steps = steps;
         this.calories = calories;

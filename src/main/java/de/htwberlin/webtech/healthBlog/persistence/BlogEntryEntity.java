@@ -10,7 +10,7 @@ public class BlogEntryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name= "id")
-    private Long id;
+    private long id;
 
     @Column(name = "date", nullable = false)
     private LocalDate date;
@@ -28,7 +28,6 @@ public class BlogEntryEntity {
     private String diaryEntry;
 
     public BlogEntryEntity(LocalDate date, int steps, int calories, int emojis, String diaryEntry) {
-        //this.id = id; überflüssig, da von der DB generiert
         this.date = date;
         this.steps = steps;
         this.calories = calories;
@@ -38,11 +37,8 @@ public class BlogEntryEntity {
 
     protected BlogEntryEntity() {}
 
-    public Long getId() {
+    public long getId() {
         return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public LocalDate getDate() {
