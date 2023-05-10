@@ -1,7 +1,6 @@
 package de.htwberlin.webtech.healthBlog.persistence;
 
-import javax.persistence.*;
-
+import jakarta.persistence.*;
 import java.time.LocalDate;
 
 
