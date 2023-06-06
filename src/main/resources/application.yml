@@ -1,8 +1,8 @@
 spring:
   datasource:
-    username: pmoimrmvntywei
-    password: d4f6695ccf635d15f89d35227e8d9bb02c91146dbe484e1b72bb57361481378f
-    url: jdbc:postgresql://ec2-34-251-233-253.eu-west-1.compute.amazonaws.com:5432/df5oo8r5vc521a
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
+    url: ${DATASOURCE_URL}
     driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: 5
