@@ -18,6 +18,8 @@ public class BlogEntryManipulationRequest {
         this.diaryEntry = diaryEntry;
     }
 
+    public BlogEntryManipulationRequest() {    }
+
     public LocalDate getDate() {
         return date;
     }
