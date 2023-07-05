@@ -3,6 +3,7 @@ package de.htwberlin.webtech.healthBlog.web;
 import de.htwberlin.webtech.healthBlog.service.BlogEntryService;
 import de.htwberlin.webtech.healthBlog.web.api.BlogEntry;
 import de.htwberlin.webtech.healthBlog.web.api.BlogEntryManipulationRequest;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +33,7 @@ public class BlogEntryRestController {
     }
 
     @PostMapping(path = "/api/v1/blog-entries")
-    public ResponseEntity<Void> createBlogEntry(@RequestBody BlogEntryManipulationRequest request)
+    public ResponseEntity<Void> createBlogEntry(@Valid @RequestBody BlogEntryManipulationRequest request)
             throws URISyntaxException {
         var valid = validate(request);
         if (valid) {

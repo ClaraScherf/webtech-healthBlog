@@ -1,12 +1,21 @@
 package de.htwberlin.webtech.healthBlog.web.api;
 
+
+import jakarta.validation.constraints.*;
+
 import java.time.LocalDate;
 
 public class BlogEntryManipulationRequest {
+
+    @PastOrPresent(message = "Bitte ein gültiges Datum erfassen!")
     private LocalDate date;
+    @Positive(message = "Bitte Schritte erfassen!")
     private int steps;
+    @Positive(message = "Bitte Kalorien erfassen!")
     private int calories;
+
     private int emojis;
+    @NotBlank(message = "Bitte einen Eintrag erfassen!")
     private String diaryEntry;
 
 
