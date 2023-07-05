@@ -1,5 +1,6 @@
 package de.htwberlin.webtech.healthBlog.web.api;
 
+
 import java.time.LocalDate;
 
 
@@ -9,6 +10,7 @@ import java.time.LocalDate;
 public class BlogEntry {
 
     private long id;
+
     private LocalDate date;
     private int steps;
     private int calories;

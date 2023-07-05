@@ -5,6 +5,7 @@ import de.htwberlin.webtech.healthBlog.web.api.BlogEntry;
 import de.htwberlin.webtech.healthBlog.web.api.BlogEntryManipulationRequest;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -12,6 +13,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
+@Validated
 public class BlogEntryRestController {
 
     private final BlogEntryService blogEntryService;
@@ -39,7 +41,10 @@ public class BlogEntryRestController {
         if (valid) {
             var blogEntry = blogEntryService.create(request);
             URI uri = new URI("/api/v1/blog-entries/" + blogEntry.getId());
-            return ResponseEntity.created(uri).build();
+            return ResponseEntity
+                    .created(uri)
+                    .header("Access-Control-Expose-Headers", "Location")
+                    .build();
         }
         else {
             return ResponseEntity.badRequest().build();
