@@ -37,8 +37,6 @@ public class BlogEntryRestController {
     @PostMapping(path = "/api/v1/blog-entries")
     public ResponseEntity<Void> createBlogEntry(@Valid @RequestBody BlogEntryManipulationRequest request)
             throws URISyntaxException {
-        var valid = validate(request);
-        if (valid) {
             var blogEntry = blogEntryService.create(request);
             URI uri = new URI("/api/v1/blog-entries/" + blogEntry.getId());
             return ResponseEntity
@@ -46,10 +44,6 @@ public class BlogEntryRestController {
                     .header("Access-Control-Expose-Headers", "Location")
                     .build();
         }
-        else {
-            return ResponseEntity.badRequest().build();
-        }
-    }
 
     @PutMapping(path = "/api/v1/blog-entries/{id}")
     public ResponseEntity<BlogEntry> updateBlogEntry(@PathVariable Long id,
@@ -64,13 +58,13 @@ public class BlogEntryRestController {
         return successful? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }
 
-    private boolean validate(BlogEntryManipulationRequest request) {
+    /*private boolean validate(BlogEntryManipulationRequest request) {
         return request.getDate() != null
                 && request.getCalories() > 0
                 && request.getSteps() > 0
                 && request.getEmojis() <= 0 && request.getEmojis() <= 2
                 && request.getDiaryEntry() != null
                 && !request.getDiaryEntry().isBlank();
-    }
+    }*/
 
 }
